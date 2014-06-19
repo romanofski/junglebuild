@@ -1,0 +1,35 @@
+---
+- name: Provision shell environment
+  hosts: workstation
+  vars:
+    user_home: /home/{{ansible_ssh_user}}
+  tasks:
+    - name: ensure zsh installed
+      yum: name=zsh state=latest
+      sudo: yes
+
+    - name: register zsh for user
+      command: chsh -s /bin/zsh {{ansible_ssh_user}}
+      sudo: yes
+
+    - name: clone oh-my-zsh
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh.git
+        dest: "{{user_home}}/.oh-my-zsh"
+        accept_hostkey: yes
+
+    - name: register oh-my-zsh checkout directory
+      shell: "echo {{user_home}}/.oh-my-zsh"
+      register: ohmyzsh_path
+
+    - name: clone my zsh rc repository
+      git:
+        repo: git@github.com:romanofski/zshrc.git
+        dest: "{{user_home}}/tools/zshrc"
+        accept_hostkey: yes
+
+    - name: install zshrc by creating symbolic link
+      command: ln -s {{user_home}}/tools/zshrc/zshrc {{user_home}}/.zshrc creates={{user_home}}/.zshrc
+
+    - name: install zsh custom by creating symbolic link
+      command: ln -s {{user_home}}/tools/zshrc/zsh-custom {{ohmyzsh_path.stdout}} creates={{ohmyzsh_path.stdout}}/zsh-custom
