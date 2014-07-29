@@ -1,0 +1,16 @@
+---
+- name: Provision vim environment
+  hosts: workstation
+  vars:
+    user_home: /home/{{ansible_ssh_user}}
+  tasks:
+
+    - name: ensure vim installed
+      yum: name=vim state=latest
+      sudo: yes
+
+    - name: clone my vim setup
+      git:
+        repo: git://gist.github.com/3492790.git
+        dest: "{{user_home}}/tools/vimrc"
+        accept_hostkey: yes
