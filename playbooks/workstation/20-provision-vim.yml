@@ -14,3 +14,7 @@
         repo: git@github.com:romanofski/vimrc.git
         dest: "{{user_home}}/tools/vimrc"
         accept_hostkey: yes
+
+    - name: additional development tools for plugins
+      yum: name=ctags state=latest
+      sudo: yes
