@@ -4,6 +4,11 @@
   vars:
     user_home: /home/{{ansible_ssh_user}}
   tasks:
+
+    - name: install git
+      yum: name=git state=latest
+      sudo: yes
+
     - name: ensure zsh installed
       yum: name=zsh state=latest
       sudo: yes
