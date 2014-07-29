@@ -11,6 +11,6 @@
 
     - name: clone my vim setup
       git:
-        repo: git://gist.github.com/3492790.git
+        repo: git@github.com:romanofski/vimrc.git
         dest: "{{user_home}}/tools/vimrc"
         accept_hostkey: yes
