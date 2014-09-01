@@ -1,0 +1,10 @@
+---
+- name: ensure xmonad is installed
+  yum: name=xmonad state=latest
+  sudo: yes
+
+- name: clone xmonad git repository
+  git:
+    repo: git@github.com:romanofski/xmonad-conf.git
+    dest: /home/{{local_user}}/tools/xmonad-conf
+    accept_hostkey: yes

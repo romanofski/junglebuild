@@ -1,0 +1,8 @@
+- name: Full deployment
+  hosts: local
+  connection: local
+  roles:
+    - common
+    - shell
+    - wm
+    - vim
