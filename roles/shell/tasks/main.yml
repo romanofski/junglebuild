@@ -19,7 +19,7 @@
 
 - name: clone my zsh rc repository
   git:
-    repo: git@github.com:romanofski/zshrc.git
+    repo: "{{ zsh_git_repository }}/zshrc.git"
     dest: "{{user_home}}/tools/zshrc"
     accept_hostkey: yes
 

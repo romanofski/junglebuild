@@ -1,0 +1,9 @@
+---
+- name: "Check if we're running inside a docker container"
+  shell: cat /proc/1/cgroup | sed 's/^.*:\/$//' | grep 'docker'
+  register: is_docker
+  ignore_errors: True
+
+- name: Overwrite git repository if we're inside a docker container == running test
+  include_vars: docker.yml
+  when: '"docker" in is_docker.stdout'

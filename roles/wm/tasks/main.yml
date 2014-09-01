@@ -5,6 +5,6 @@
 
 - name: clone xmonad git repository
   git:
-    repo: git@github.com:romanofski/xmonad-conf.git
-    dest: /home/{{local_user}}/tools/xmonad-conf
+    repo: "{{ zsh_git_repository }}/xmonad-conf.git"
+    dest: "{{ user_home }}/tools/xmonad-conf"
     accept_hostkey: yes
