@@ -24,7 +24,7 @@
     accept_hostkey: yes
 
 - name: install zshrc
-  command: make install chdir={{user_home}}/tools/zshrc
+  shell: make uninstall && make install chdir={{user_home}}/tools/zshrc
 
 - name: register zsh for user
   command: chsh -s /bin/zsh {{ansible_ssh_user}}
