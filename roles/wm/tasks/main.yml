@@ -1,7 +1,15 @@
 ---
-- name: ensure xmonad is installed
-  yum: name=xmonad state=latest
+- name: ensure xmonad and tools are installed
+  yum: name={{ item }} state=latest
   sudo: yes
+  with_items:
+    - xmonad
+    - xmobar
+    - xautolock
+    - parcellite
+    - workrave
+    - pidgin
+    - hamster-time-tracker
 
 - name: clone xmonad git repository
   git:
