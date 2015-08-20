@@ -12,7 +12,7 @@ ENV HOME /home/rjoost
 RUN echo "%wheel  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 RUN usermod -G wheel rjoost
 
-VOLUME ["/junglebuild"]
+VOLUME ["/junglebuild", "/home/rjoost"]
 ADD runplaybook.sh /runplaybook.sh
 USER rjoost
 ENTRYPOINT ["/runplaybook.sh"]
