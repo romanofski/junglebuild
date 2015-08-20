@@ -6,6 +6,7 @@
     - xmonad
     - xmobar
     - xautolock
+    - xlockmore
     - parcellite
     - workrave
     - pidgin
@@ -13,6 +14,6 @@
 
 - name: clone xmonad git repository
   git:
-    repo: "{{ zsh_git_repository }}/xmonad-conf.git"
-    dest: "{{ user_home }}/tools/xmonad-conf"
+    repo: "{{ github_repository }}/xmonad-conf.git"
+    dest: "{{ configs_path }}/xmonad-conf"
     accept_hostkey: yes

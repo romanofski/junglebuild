@@ -3,6 +3,7 @@
   connection: local
   roles:
     - common
-    - shell
-    - wm
-    - vim
+    - { role: shell, tags: [shell, zsh] }
+    - { role: wm, tags: [wm, xmonad] }
+    - { role: vim, tags: vim }
+    - { role: emacs, tags: emacs }

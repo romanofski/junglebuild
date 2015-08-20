@@ -1,32 +1,33 @@
 ---
 - name: install git
-  yum: name=git state=latest
+  dnf: name=git state=latest
   sudo: yes
 
 - name: ensure zsh installed
-  yum: name=zsh state=latest
+  dnf: name=zsh state=latest
   sudo: yes
 
 - name: clone oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: "{{user_home}}/.oh-my-zsh"
+    dest: "{{ user_home }}/.oh-my-zsh"
     accept_hostkey: yes
 
 - name: register oh-my-zsh checkout directory
-  shell: "echo {{user_home}}/.oh-my-zsh"
+  shell: "echo {{ user_home }}/.oh-my-zsh"
   register: ohmyzsh_path
 
 - name: clone my zsh rc repository
   git:
-    repo: "{{ zsh_git_repository }}/zshrc.git"
-    dest: "{{user_home}}/tools/zshrc"
+    repo: "{{ github_repository }}/zshrc.git"
+    dest: "{{ configs_path }}/zshrc"
     accept_hostkey: yes
 
 - name: install zshrc
-  shell: make uninstall && make install chdir={{user_home}}/tools/zshrc
+  shell: make uninstall && make install chdir={{ configs_path }}/zshrc
+  ignore_errors: true
 
 - name: register zsh for user
-  command: chsh -s /bin/zsh {{ansible_ssh_user}}
+  command: chsh -s /bin/zsh {{ ansible_ssh_user }}
   sudo: yes
 

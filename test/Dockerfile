@@ -4,6 +4,7 @@
 FROM fedora:latest
 RUN yum install -y \
   ansible \
+  sudo \
   make && yum clean all
 
 RUN adduser -d /home/rjoost -m rjoost
