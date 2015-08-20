@@ -1,0 +1,15 @@
+---
+- name: get stack repository
+  sudo: yes
+  get_url:
+    url: https://s3.amazonaws.com/download.fpcomplete.com/fedora/{{ ansible_distribution_major_version }}/fpco.repo
+    dest: /etc/yum.repos.d/fpco.repo
+  when: ansible_distribution == "Fedora"
+
+- name: install packages
+  sudo: yes
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - stack

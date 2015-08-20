@@ -7,3 +7,4 @@
     - { role: wm, tags: [wm, xmonad] }
     - { role: vim, tags: vim }
     - { role: emacs, tags: emacs }
+    - { role: devel/languages/haskell, tags: [haskell, languages] }
