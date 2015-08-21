@@ -7,3 +7,7 @@
 - name: Overwrite git repository if we're inside a docker container == running test
   include_vars: docker.yml
   when: '"docker" in is_docker.stdout'
+
+- name: ensure git is installed
+  dnf: name=git state=latest
+  sudo: yes

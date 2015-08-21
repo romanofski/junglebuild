@@ -1,0 +1,58 @@
+---
+- name: Install development tools
+  sudo: yes
+  dnf:
+    name: "@Development Tools"
+    state: present 
+
+- name: Install compile dependencies
+  sudo: yes
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - autoconf
+    - automake
+    - ncurses-devel
+    - notmuch-devel
+    - openssl-devel
+    - tokyocabinet-devel
+
+- name: Clone muttkz repository
+  git:
+    repo: https://github.com/karelzak/mutt-kz.git
+    dest: "{{ project_home }}"
+
+- name: configure muttkz
+  command: ./prepare
+  args:
+    chdir: "{{ project_home }}"
+
+- name: configure muttkz
+  command: ./configure --enable-notmuch --enable-imap --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
+  args:
+    chdir: "{{ project_home }}"
+
+- name: compile muttkz
+  command: make
+  args:
+    chdir: "{{ project_home }}"
+
+- name: install muttkz
+  sudo: yes
+  command: make install
+  args:
+    chdir: "{{ project_home }}"
+
+- name: fix up ownership muttkz
+  sudo: yes
+  command: "sudo chown -R {{ ansible_ssh_user }}.{{ ansible_ssh_user }} {{ prefix }}"
+
+- name: ensure users local exists
+  file:
+    path: "{{ user_home }}/.local/bin"
+    state: directory
+    mode: 0755
+
+- name: create a local link to mutt
+  command: ln -s {{ prefix }}/bin/mutt {{ user_home }}/.local/bin/mutt

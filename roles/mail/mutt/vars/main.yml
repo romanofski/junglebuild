@@ -1,0 +1,3 @@
+---
+project_home: "{{ user_home }}/works/mutt-kz"
+prefix: "{{ user_home }}/tools/muttkz"

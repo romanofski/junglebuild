@@ -1,8 +1,4 @@
 ---
-- name: install git
-  dnf: name=git state=latest
-  sudo: yes
-
 - name: ensure zsh installed
   dnf: name=zsh state=latest
   sudo: yes

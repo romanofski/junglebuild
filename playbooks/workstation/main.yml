@@ -9,3 +9,4 @@
     - { role: emacs, tags: emacs }
     - { role: devel/languages/haskell, tags: [haskell, languages] }
     - { role: devel/languages/python, tags: [python, languages] }
+    - { role: mail/mutt, tags: mail }
