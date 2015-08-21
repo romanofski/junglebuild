@@ -8,3 +8,4 @@
     - { role: vim, tags: vim }
     - { role: emacs, tags: emacs }
     - { role: devel/languages/haskell, tags: [haskell, languages] }
+    - { role: devel/languages/python, tags: [python, languages] }

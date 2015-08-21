@@ -1,0 +1,12 @@
+---
+- name: ensure virtualenv is installed
+  sudo: true
+  dnf:
+    name: python-virtualenv
+    state: latest
+
+- name: Create virtualenv
+  command: virtualenv {{ user_home }}/tools/python{{ ansible_python_version }} 
+  register: virtualenv_output
+
+- debug: var=virtualenv_output
