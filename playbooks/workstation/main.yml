@@ -10,3 +10,4 @@
     - { role: devel/languages/haskell, tags: [haskell, languages] }
     - { role: devel/languages/python, tags: [python, languages] }
     - { role: mail/mutt, tags: mail }
+    - { role: mail/offlineimap, tags: [mail, mda] }
