@@ -25,5 +25,8 @@
   dnf: name=ctags state=latest
   sudo: yes
   with_items:
+    - hlint
+    - stylish-haskell
+    - hasktags
     - ctags
     - python-flake8
