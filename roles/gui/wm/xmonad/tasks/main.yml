@@ -19,7 +19,12 @@
     accept_hostkey: yes
 
 - name: Remove (old) XMonad configuration
-  command: make install chdir={{ user_home }}/tools/xmonad-conf
+  command: make uninstall
+  args:
+    chdir: "{{ configs_path }}/xmonad-conf"
+  ignore_errors: true
 
 - name: Install XMonad configuration
-  command: make install chdir={{ user_home }}/tools/xmonad-conf
+  command: make install
+  args:
+    chdir: "{{ configs_path }}/xmonad-conf"
