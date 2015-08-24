@@ -1,4 +1,21 @@
 ---
+- name: Install runtime dependencies
+  sudo: yes
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - lbdb
+    - a2ps
+    - recode
+    - gnupg
+    - elinks
+
+- name: Solarized for mutt
+  git:
+    repo: https://github.com/altercation/mutt-colors-solarized.git
+    dest: "{{ user_home }}/works/mutt-colors-solarized"
+
 - name: Install development tools
   sudo: yes
   dnf:
