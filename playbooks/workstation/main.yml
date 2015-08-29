@@ -4,7 +4,8 @@
   roles:
     - common
     - { role: shell, tags: [shell, zsh] }
-    - { role: gui/wm/xmonad, tags: [wm, xmonad] }
+    - { role: gui/wm/xmonad, tags: [gui, xmonad] }
+    - { role: gui/fonts, tags: [gui, fonts] }
     - { role: vim, tags: vim }
     - { role: emacs, tags: emacs }
     - { role: devel/languages/haskell, tags: [haskell, languages] }
