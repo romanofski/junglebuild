@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   roles:
-    - common
+    - { role: common, tags: [common] }
     - { role: shell, tags: [shell, zsh] }
     - { role: gui/wm/xmonad, tags: [gui, xmonad] }
     - { role: gui/fonts, tags: [gui, fonts] }
