@@ -22,11 +22,13 @@
   ignore_errors: true
 
 - name: additional development tools for plugins
-  dnf: name=ctags state=latest
+  dnf:
+    name: "{{ item }}"
+    state: latest
   sudo: yes
   with_items:
+    - ctags
     - hlint
-    - stylish-haskell
-    - hasktags
     - ctags
     - python-flake8
+    - nodejs-tern
