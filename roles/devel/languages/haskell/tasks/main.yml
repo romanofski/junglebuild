@@ -13,3 +13,9 @@
     state: latest
   with_items:
     - stack
+    - cabal-install
+    - ghc-Cabal-devel
+    - zlib-devel
+
+- name: cabal update
+  command: cabal update
