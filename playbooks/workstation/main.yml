@@ -4,6 +4,7 @@
   roles:
     - { role: common, tags: [common] }
     - { role: shell/zsh, tags: [shell, zsh] }
+    - { role: shell/apps, tags: [shell, apps] }
     - { role: gui/wm/xmonad, tags: [gui, xmonad] }
     - { role: gui/fonts, tags: [gui, fonts] }
     - { role: gui/apps, tags: [apps] }

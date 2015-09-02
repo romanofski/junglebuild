@@ -1,9 +1,9 @@
 ---
-- name: ensure needed applications are installed
+- name: install console apps
   dnf:
     name: "{{ item }}"
     state: present
   sudo: yes
   with_items:
-    - firefox
-    - feh
+    - byobu
+    - powertop
