@@ -11,6 +11,7 @@
     - workrave
     - pidgin
     - hamster-time-tracker
+    - terminator
 
 - name: clone xmonad git repository
   git:
