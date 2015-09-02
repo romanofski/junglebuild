@@ -1,0 +1,9 @@
+---
+- name: ensure needed applications are installed
+  dnf:
+    name: "{{ item }}"
+    state: present
+  sudo: yes
+  with_items:
+    - firefox
+    - byobu
