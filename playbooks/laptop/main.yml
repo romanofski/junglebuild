@@ -1,0 +1,15 @@
+---
+- name: Full deployment
+  hosts: local
+  connection: local
+  roles:
+    - { role: common, tags: [common] }
+    - { role: shell/zsh, tags: [shell, zsh] }
+    - { role: shell/apps, tags: [shell, apps] }
+    - { role: gui/wm/xmonad, tags: [gui, xmonad] }
+    - { role: gui/fonts, tags: [gui, fonts] }
+    - { role: gui/apps, tags: [apps] }
+    - { role: vim, tags: vim }
+    - { role: emacs, tags: emacs }
+    - { role: devel/languages/haskell, tags: [haskell, languages] }
+    - { role: devel/languages/python, tags: [python, languages] }
