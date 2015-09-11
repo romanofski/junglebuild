@@ -11,7 +11,7 @@
     - workrave
     - pidgin
     - hamster-time-tracker
-    - terminator
+    - xfce4-terminal
 
 - name: clone xmonad git repository
   git:
