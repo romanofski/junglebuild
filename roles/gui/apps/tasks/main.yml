@@ -4,7 +4,9 @@
     name: "{{ item }}"
     state: present
   sudo: yes
+  tags: packages
   with_items:
     - firefox
     - feh
     - keepassx
+    - arandr
