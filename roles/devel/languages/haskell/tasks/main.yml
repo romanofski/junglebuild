@@ -8,15 +8,11 @@
 
 - name: install packages
   sudo: yes
+  tags: packages
   dnf:
     name: "{{ item }}"
     state: latest
   with_items:
     - stack
-    - cabal-install
-    - ghc-Cabal-devel
     - zlib-devel
     - happy
-
-- name: cabal update
-  command: cabal update
