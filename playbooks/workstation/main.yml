@@ -12,5 +12,6 @@
     - { role: emacs, tags: emacs }
     - { role: devel/languages/haskell, tags: [haskell, languages] }
     - { role: devel/languages/python, tags: [python, languages] }
+    - { role: devel/docker, tags: docker }
     - { role: mail/mutt, tags: mail }
     - { role: mail/offlineimap, tags: [mail, mda] }

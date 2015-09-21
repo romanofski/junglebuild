@@ -1,0 +1,14 @@
+---
+- name: ensure docker is installed
+  sudo: yes
+  tags: packages
+  dnf:
+    name: docker
+    state: present
+
+- name: make sure docker is started on book
+  sudo: yes
+  service:
+    name: docker
+    state: started
+    enabled: yes
