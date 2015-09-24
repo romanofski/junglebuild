@@ -1,9 +1,13 @@
 ---
 - name: ensure virtualenv is installed
   sudo: true
+  tags: packages
   dnf:
-    name: python-virtualenv
-    state: latest
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-virtualenv
+    - python-virtualenvwrapper
 
 - name: Create virtualenv
   command: virtualenv {{ user_home }}/tools/python{{ ansible_python_version }} 
