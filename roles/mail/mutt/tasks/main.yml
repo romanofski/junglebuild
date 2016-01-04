@@ -72,4 +72,7 @@
     mode: 0755
 
 - name: create a local link to mutt
-  command: ln -s {{ prefix }}/bin/mutt {{ user_home }}/.local/bin/mutt
+  file:
+    src: "{{ prefix }}/bin/mutt"
+    dest: "{{ user_home }}/.local/bin/mutt"
+    state: link
