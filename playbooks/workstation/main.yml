@@ -15,3 +15,4 @@
     - { role: devel/docker, tags: docker }
     - { role: mail/mutt, tags: [mail, mutt] }
     - { role: mail/offlineimap, tags: [mail, mda] }
+    - { role: auth, tags: [sssd, auth] }

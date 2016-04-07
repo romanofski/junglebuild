@@ -1,0 +1,35 @@
+---
+
+- name: Install sssd package
+  sudo: yes
+  dnf:
+    name: sssd
+    state: present
+
+- name: Configure sssd service
+  sudo: yes
+  template:
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+    - Restart sssd
+
+- name: Enable sssd service
+  sudo: yes
+  service:
+    name: sssd
+    enabled: yes
+
+- name: Make sure sssd is running
+  sudo: yes
+  service:
+    name: sssd
+    state: started
+  register: sssd_service_started
+
+- name: Enable NSS/PAM
+  sudo: yes
+  command: authconfig --enablesssd --enablesssdauth --update

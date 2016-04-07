@@ -1,0 +1,27 @@
+---
+sssd_config:
+  sssd:
+    domains: default
+    services: nss, pam
+    config_file_version: 2
+  pam:
+    reconnection_retries: 3
+  nss:
+    filter_groups: root,wheel,adm
+    filter_users: root
+    reconnection_retries: 3
+    entry_cache_nowait_percentage: 300
+  'domain/default':
+    id_provider: ldap
+    auth_provider: krb5
+    chpass_provider: krb5
+    ldap_uri: ldap://ldap.test.org
+    ldap_search_base: dc=whatever
+    ldap_tls_cacertdir: /etc/pki/tls/certs
+    cache_credentials: True
+    override_homedir: /home/%u
+    entry_cache_timeout: 5400
+    krb5_realm: TEST.ORG
+    krb5_server: krb.test.org
+    krb5_kpasswd: serverkrb.test.org
+    krb5_store_password_if_offline: True

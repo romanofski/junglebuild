@@ -1,0 +1,10 @@
+# This file is managed by ansible. Do not edit.
+#
+
+{% for key, dict in sssd_config.items() %}
+
+[{{ key }}]
+{% for k, v in dict.items() %}
+{{k}} = {{v}}
+{% endfor %}
+{% endfor %}
