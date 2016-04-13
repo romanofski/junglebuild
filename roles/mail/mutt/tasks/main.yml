@@ -40,6 +40,11 @@
     repo: https://github.com/karelzak/mutt-kz.git
     dest: "{{ project_home }}"
 
+- name: Clean repository
+  command: git clean -xdf
+  args:
+    chdir: "{{ project_home }}"
+
 - name: configure muttkz
   command: ./prepare
   args:
