@@ -1,0 +1,22 @@
+---
+- name: ensure delivery packages are installed
+  sudo: yes
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+  - fetchmail
+  - procmail
+
+- name: Configure fetchmail
+  template:
+    src: fetchmailrc.j2
+    dest: "{{ user_home }}/.fetchmailrc" 
+    mode: 0600
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+
+- name: Check fetchmail config
+  command: fetchmail -c
+  failed_when: result.rc > 1
+  register: result
