@@ -34,6 +34,7 @@
     - notmuch-devel
     - openssl-devel
     - tokyocabinet-devel
+    - cyrus-sasl-devel
 
 - name: Clone muttkz repository
   git:
@@ -51,7 +52,7 @@
     chdir: "{{ project_home }}"
 
 - name: configure muttkz
-  command: ./configure --enable-notmuch --enable-sidebar --enable-imap --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
+  command: ./configure --enable-notmuch --enable-sidebar --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
   args:
     chdir: "{{ project_home }}"
 
