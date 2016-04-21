@@ -6,11 +6,25 @@
     state: latest
 
 - name: install new offlineimap conf
-  copy:
-    src: offlineimaprc
+  template:
+    src: offlineimaprc.j2
     dest: "{{ user_home }}/.offlineimaprc"
-    backup: yes
-  register: offlineimap_config
+    mode: 0600
 
-- debug:
-    var: offlineimap_config
+- name: write systemd service
+  sudo: yes
+  copy:
+    src: offlineimap@.service
+    dest: "/etc/systemd/system/offlineimap@.service"
+    mode: 644
+
+- name: restart systemd daemon
+  sudo: yes
+  command: systemctl daemon-reload
+
+- name: enable offlinemap service
+  sudo: yes
+  service:
+    name: offlineimap@{{ ansible_ssh_user }}.service
+    enabled: yes
+    state: started

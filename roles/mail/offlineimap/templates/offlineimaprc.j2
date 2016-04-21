@@ -1,0 +1,29 @@
+# Config tailored to use Kerberos authentication for my own purposefetchmail
+
+[general]
+ui = Noninteractive.Quiet
+#ui = Curses.Blinkenlights
+accounts = {{ offlineimap.account }}
+maxsyncaccounts = 2
+
+[Account {{ offlineimap.account }}]
+localrepository = {{ offlineimap.account }}Local
+remoterepository = {{ offlineimap.account }}Remote
+autorefresh = 5
+postsynchook = {{ offlineimap.postsynchook }} 
+
+[Repository {{ offlineimap.account }}Local]
+type = Maildir
+localfolders = ~/Maildir/
+
+[Repository {{ offlineimap.account }}Remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = {{ offlineimap.certfingerprint }}
+maxconnections = 1
+remotehost = {{ offlineimap.remotehost }}
+remoteport = 993
+remoteuser = {{ offlineimap.remoteuser }}
+folderfilter = {{ offlineimap.folderfilter }}
+idlefolders = {{ offlineimap.idlefolders }}
+holdconnectionopen = yes

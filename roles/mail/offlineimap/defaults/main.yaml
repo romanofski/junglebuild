@@ -1,0 +1,9 @@
+---
+offlineimap:
+  account: MyAccount
+  postsynchook: ""
+  certfingerprint: ""
+  remotehost: my.mailserver.test
+  remoteuser: username
+  folderfilter: ""
+  idlefolders: ""

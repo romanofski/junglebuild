@@ -1,0 +1,16 @@
+# /etc/systemd/system/offlineimap@.service
+[Unit]
+Description=Start offlineimap as a daemon
+Requires=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/offlineimap -u basic -o
+KillSignal=SIGUSR2
+Restart=on-failure
+TimeoutSec=5min
+
+[Install]
+WantedBy=multi-user.target
