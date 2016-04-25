@@ -41,25 +41,15 @@
     repo: https://github.com/karelzak/mutt-kz.git
     dest: "{{ project_home }}"
 
-- name: Clean repository
-  command: git clean -xdf
+- name: Install mutt-kz
+  command: "{{ item }}"
   args:
     chdir: "{{ project_home }}"
-
-- name: configure muttkz
-  command: ./prepare
-  args:
-    chdir: "{{ project_home }}"
-
-- name: configure muttkz
-  command: ./configure --enable-notmuch --enable-sidebar --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
-  args:
-    chdir: "{{ project_home }}"
-
-- name: compile muttkz
-  command: make
-  args:
-    chdir: "{{ project_home }}"
+  with_items:
+    - "git clean -xdf"
+    - ./prepare
+    - ./configure --enable-notmuch --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
+    - make
 
 - name: install muttkz
   sudo: yes
