@@ -1,0 +1,17 @@
+import PATH
+DEFAULT="$HOME/Maildir"
+
+logfile "$HOME/maildrop.log"
+
+if (/^From:.*@gnome.org/:h)
+{
+  to "| notmuch-deliver -f -t list -r inbox $DEFAULT/gimp-list"
+}
+
+# Handle spam
+if (/^From: messages-noreply@linkedin.com/:h)
+{
+  to "| notmuch-deliver -f -t spam -r inbox"
+}
+
+to  "|notmuch-deliver -t inbox -v"

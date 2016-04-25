@@ -2,6 +2,6 @@ poll {{ fetchmail.server }} protocol imap:
     username "{{ fetchmail.username }}"
     password "{{ fetchmail.password }}"
     is "{{ fetchmail.localuser }}" here;
-    mda "/usr/bin/procmail -f %F"
+    mda "/usr/bin/maildrop"
     ssl
     sslcertck

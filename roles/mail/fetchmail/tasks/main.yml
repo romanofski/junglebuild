@@ -6,8 +6,59 @@
     state: latest
   with_items:
   - fetchmail
-  - procmail
+  - maildrop
 
+- name: install notmuch compile deps
+  sudo: yes
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - libtool
+
+- name: clone notmuch repository for notmuch-deliver
+  git:
+    repo: https://github.com/sbinet/notmuch.git
+    dest: "{{ project_base_home }}"
+
+- name: Clean repository
+  command: git clean -xdf
+  args:
+    chdir: "{{ project_base_home }}"
+
+- name: install notmuch-deliver
+  command: ./autogen.sh
+  args:
+    chdir: "{{ project_home }}"
+  with_items:
+    - "./autogen.sh"
+    - "./configure --prefix={{ user_home }}/.local"
+    - make
+    - make install
+
+- name: install mailfilter
+  copy:
+    src: mailfilter
+    dest: "{{ user_home }}/.mailfilter"
+    mode: 0600
+    
+- name: prepare maildrop test
+  copy:
+    src: testmail
+    dest: /tmp/testmail
+
+- name: Test deliver mail through maildrop
+  shell: cat /tmp/testmail | maildrop -V9 -d
+  register: output
+
+- debug:
+    var: output
+
+- name: remove testmail
+  file:
+    state: absent
+    path: /tmp/testmail
+  
 - name: Configure fetchmail
   template:
     src: fetchmailrc.j2
