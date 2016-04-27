@@ -18,6 +18,7 @@
   git:
     repo: "{{ github_repository }}/xmonad-conf.git"
     dest: "{{ configs_path }}/xmonad-conf"
+    version: "{{ xmonadconf_branch }}"
     accept_hostkey: yes
 
 - name: Remove (old) XMonad configuration
@@ -30,3 +31,8 @@
   command: make install
   args:
     chdir: "{{ configs_path }}/xmonad-conf"
+
+- name: Configure Xresources
+  template:
+    src: Xresources.j2
+    dest: "{{ user_home }}/.Xresources"
