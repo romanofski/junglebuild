@@ -1,0 +1,17 @@
+Config { font = "xft:Droid Sans:size=8"
+       , allDesktops = True
+       , overrideRedirect = True
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "#073642"
+       , fgColor = "grey"
+       , position = TopW L 100
+       , lowerOnStart = True
+       , persistent = False
+       , hideOnStart = False
+       , commands = [ {{ '\n, '.join(xmobar.commands) }}
+                    ]
+       , sepChar = "%"
+       , alignSep = "||"
+       , template = "{{ xmobar.template }}"
+       }

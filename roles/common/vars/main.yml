@@ -1,4 +1,4 @@
 ---
-user_home: /home/{{ansible_ssh_user}}
+user_home: "{{ansible_user_dir}}"
 configs_path: "{{ user_home }}/works/configs"
 github_repository: git@github.com:romanofski

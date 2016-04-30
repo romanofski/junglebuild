@@ -36,3 +36,15 @@
   template:
     src: Xresources.j2
     dest: "{{ user_home }}/.Xresources"
+
+- name: Configure xmobar
+  tags: xmobar
+  template:
+    src: xmobarrc.j2
+    dest: "{{ user_home }}/.xmobarrc"
+
+- name: Verify xmobar configuration
+  tags: xmobar
+  command: xmobar --help
+  failed_when: result.stderr
+  register: result
