@@ -16,3 +16,32 @@
     - stack
     - zlib-devel
     - happy
+
+- name: clone cabal-helper for ghc-mod
+  git:
+    repo: "https://github.com/DanielG/cabal-helper.git"
+    dest: "{{ user_home }}/works/cabal-helper"
+    accept_hostkey: yes
+
+- name: compile/install cabal-helper for ghc-mod
+  command: "{{ item }}"
+  args:
+    chdir: "{{ user_home }}/works/cabal-helper"
+  with_items:
+    - "git clean -xdf"
+    - stack init
+    - stack install
+
+- name: clone ghc-mod
+  git:
+    repo: "https://github.com/kazu-yamamoto/ghc-mod.git"
+    dest: "{{ user_home }}/works/ghc-mod"
+    accept_hostkey: yes
+
+- name: compile/install ghc-mod
+  command: "{{ item }}"
+  args:
+    chdir: "{{ user_home }}/works/ghc-mod"
+  with_items:
+    - "git clean -xdf"
+    - stack install
