@@ -1,0 +1,12 @@
+---
+- name: Have tmux installed
+  sudo: yes
+  dnf:
+    name: tmux
+    state: present 
+
+- name: Configure it
+  copy:
+    src: tmux.conf
+    dest: "{{ user_home }}/.tmux.conf"
+    mode: 0600
