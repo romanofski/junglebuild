@@ -1,6 +1,6 @@
 ---
 - name: ensure xmonad and tools are installed
-  yum: name={{ item }} state=latest
+  dnf: name={{ item }} state=latest
   sudo: yes
   tags: packages
   with_items:
