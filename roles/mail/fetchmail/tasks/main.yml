@@ -64,8 +64,8 @@
     src: fetchmailrc.j2
     dest: "{{ user_home }}/.fetchmailrc" 
     mode: 0600
-    owner: "{{ ansible_ssh_user }}"
-    group: "{{ ansible_ssh_user }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
 
 - name: Check fetchmail config
   command: fetchmail -c

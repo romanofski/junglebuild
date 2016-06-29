@@ -24,6 +24,6 @@
   ignore_errors: true
 
 - name: register zsh for user
-  command: chsh -s /bin/zsh {{ ansible_ssh_user }}
+  command: chsh -s /bin/zsh {{ ansible_user_id }}
   sudo: yes
 

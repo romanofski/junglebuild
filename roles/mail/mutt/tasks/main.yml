@@ -59,7 +59,7 @@
 
 - name: fix up ownership muttkz
   sudo: yes
-  command: "sudo chown -R {{ ansible_ssh_user }}.{{ ansible_ssh_user }} {{ prefix }}"
+  command: "sudo chown -R {{ ansible_user_id }}.{{ ansible_user_id }} {{ prefix }}"
 
 - name: ensure users local exists
   file:

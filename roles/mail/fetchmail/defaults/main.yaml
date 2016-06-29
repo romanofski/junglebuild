@@ -3,4 +3,4 @@ fetchmail:
   server: mymailserver.test
   username: myuser
   password: secret
-  localuser: "{{ ansible_ssh_user }}"
+  localuser: "{{ ansible_user_id }}"

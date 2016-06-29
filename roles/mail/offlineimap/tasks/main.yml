@@ -25,6 +25,6 @@
 - name: enable offlinemap service
   sudo: yes
   service:
-    name: offlineimap@{{ ansible_ssh_user }}.service
+    name: offlineimap@{{ ansible_user_id }}.service
     enabled: yes
     state: started
