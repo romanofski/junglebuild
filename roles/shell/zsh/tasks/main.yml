@@ -1,7 +1,10 @@
 ---
 - name: ensure zsh installed
-  dnf: name=zsh state=latest
+  dnf: name={{ item }} state=latest
   sudo: yes
+  with_items:
+    - zsh
+    - util-linux-user
 
 - name: clone oh-my-zsh
   git:
