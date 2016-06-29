@@ -15,12 +15,6 @@
     chdir: "{{ configs_path }}/emacsrc"
   ignore_errors: true
 
-- name: attempt emacs installation
-  command: make install 
-  args:
-    chdir: "{{ configs_path }}/emacsrc"
-  ignore_errors: true
-
 - name: additional development tools for plugins
   tags: packages
   dnf:
