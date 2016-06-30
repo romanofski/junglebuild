@@ -1,5 +1,22 @@
 ---
 
+- name: Install krb
+  sudo: yes
+  tags: krb5
+  dnf:
+    name: krb5-workstation
+    state: present
+
+- name: Configure kerberos
+  sudo: yes
+  tags: krb5
+  template:
+    src: krb5.conf.j2
+    dest: /etc/krb5.conf
+    mode: 0644
+    owner: root
+    group: root
+
 - name: Install sssd package
   sudo: yes
   dnf:

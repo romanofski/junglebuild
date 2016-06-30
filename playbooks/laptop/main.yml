@@ -16,3 +16,4 @@
     - { role: mail/mutt, tags: [mail, mutt] }
     - { role: mail/fetchmail, tags: [mail, mda] }
     - { role: tmux, tags: [terminal, tmux] }
+    - { role: auth, tags: [sssd, auth] }

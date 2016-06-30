@@ -25,3 +25,17 @@ sssd_config:
     krb5_server: krb.test.org
     krb5_kpasswd: serverkrb.test.org
     krb5_store_password_if_offline: True
+krb5_config:
+  default_realm: TEST.ORG
+  realms:
+    TEST.org:
+      - kdc:
+          "test.org.:24"
+      - admin_server:
+          "admin.test.org.:23"
+      - default_domain:
+          "test.org"
+  domain_realm:
+    - { .example.com: EXAMPLE.COM }
+    - { example.com: .COM }
+
