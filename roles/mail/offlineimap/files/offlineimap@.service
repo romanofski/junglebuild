@@ -9,7 +9,7 @@ Type=simple
 User=%i
 ExecStart=/usr/bin/offlineimap -u basic -o
 KillSignal=SIGUSR2
-Restart=on-failure
+Restart=always
 TimeoutSec=5min
 
 [Install]
