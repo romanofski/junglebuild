@@ -1,0 +1,35 @@
+# -*- perl -*-
+# managed by ansible
+#
+%ldap_server_db = (
+  '{{ ldap.domain }}' =>
+  ['{{ ldap.url }}',
+   '{{ ldap.search_base }}',
+   'givenname sn cn mail',
+   'givenname sn cn mail',
+   '${mail}',
+   '${givenname} ${sn}',
+   '(LDAP)',
+   '1']
+);
+
+# hostname of your ldap server
+$ldap_server = '{{ ldap.url }}';
+# ldap base search
+$search_base = '{{ ldap.search_base }}';
+# list of the fields that will be used for the query
+$ldap_search_fields = 'uid cn sn ircnick';
+# list of the fields that will be used for composing the answer
+$ldap_expected_answers = 'uid cn sn ircnick';
+# format of the email result based on the expected answers of the ldap query
+$ldap_result_email = '${uid}@{{ ldap.domain }}';
+# format of the realname result based on the expected answers of the ldap query
+$ldap_result_realname = '${cn} ${sn}';
+# format of the comment result based on the expected answers of the ldap query
+$ldap_result_comment = '(${ircnick})';
+# Don't use wildchars on searching
+$ignorant = 0;
+# Do an anonymous bind to the LDAP server:
+$ldap_bind_dn = '';
+$ldap_bind_password = '';
+1;

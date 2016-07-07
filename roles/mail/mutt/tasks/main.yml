@@ -1,6 +1,7 @@
 ---
 - name: Install runtime dependencies
   sudo: yes
+  tags: lbdb
   dnf:
     name: "{{ item }}"
     state: present
@@ -10,6 +11,31 @@
     - recode
     - gnupg
     - elinks
+
+- name: ensure ldap directory
+  tags: lbdb
+  file:
+    path: "{{ user_home }}/.lbdb"
+    state: directory
+    mode: 0700
+
+- name: configure lbdb
+  tags: lbdb
+  template:
+    src: lbdbrc.j2
+    dest: "{{ user_home }}/.lbdb/rc"
+    mode: 0600
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
+- name: configure lbdb LDAP
+  tags: lbdb
+  template:
+    src: ldap.rc.j2
+    dest: "{{ user_home }}/.lbdb/ldap.rc" 
+    mode: 0600
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
 
 - name: Solarized for mutt
   git:

@@ -1,0 +1,5 @@
+---
+ldap:
+  search_base: "ou=Users,dc=test,dc=com"
+  url: "ldap.test.com"
+  domain: "test.org"
