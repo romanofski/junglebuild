@@ -10,6 +10,7 @@
     - a2ps
     - recode
     - gnupg
+    - gpgme-devel
     - elinks
 
 - name: ensure ldap directory
@@ -74,7 +75,7 @@
   with_items:
     - "git clean -xdf"
     - ./prepare
-    - ./configure --enable-notmuch --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
+    - ./configure --enable-notmuch --enable-gpgme --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
     - make
 
 - name: install muttkz
