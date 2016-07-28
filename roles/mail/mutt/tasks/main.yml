@@ -12,6 +12,7 @@
     - gnupg
     - gpgme-devel
     - elinks
+    - odt2txt
 
 - name: ensure ldap directory
   tags: lbdb
