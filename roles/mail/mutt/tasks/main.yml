@@ -13,6 +13,7 @@
     - gpgme-devel
     - elinks
     - odt2txt
+    - urlview
 
 - name: ensure ldap directory
   tags: lbdb
@@ -64,12 +65,12 @@
     - tokyocabinet-devel
     - cyrus-sasl-devel
 
-- name: Clone muttkz repository
+- name: Clone mutt repository
   git:
-    repo: https://github.com/karelzak/mutt-kz.git
+    repo: https://github.com/neomutt/neomutt
     dest: "{{ project_home }}"
 
-- name: Install mutt-kz
+- name: Install mutt
   command: "{{ item }}"
   args:
     chdir: "{{ project_home }}"
@@ -79,13 +80,13 @@
     - ./configure --enable-notmuch --enable-gpgme --enable-imap --with-sasl --with-ssl --enable-smtp --enable-hcache --prefix={{ prefix }} 
     - make
 
-- name: install muttkz
+- name: install mutt
   sudo: yes
   command: make install
   args:
     chdir: "{{ project_home }}"
 
-- name: fix up ownership muttkz
+- name: fix up ownership in mutt
   sudo: yes
   command: "sudo chown -R {{ ansible_user_id }}.{{ ansible_user_id }} {{ prefix }}"
 
