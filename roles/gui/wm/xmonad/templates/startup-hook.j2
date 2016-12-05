@@ -1,0 +1,20 @@
+#!/bin/bash
+# set filetype=bash
+
+#
+# Checks if the process has already started. If not start it, otherwise
+# bail silently out.
+#
+function save_start {
+    if [ -z "$(pgrep ${1})" ]; then
+        $@ &
+    fi
+}
+
+xrdb -merge ~/.Xresources
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype percent --width 10 --transparent true --tint 0x000000 &
+
+save_start "nm-applet"
+save_start "xautolock" "-detectsleep"
+save_start "feh" "-z" "--bg-fill" "Pictures/*.jpg"
+save_start "gnome-keyring-daemon" "--start"

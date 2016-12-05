@@ -14,28 +14,32 @@
     - hamster-time-tracker
     - xfce4-terminal
 
-- name: clone xmonad git repository
-  git:
-    repo: "{{ github_repository }}/xmonad-conf.git"
-    dest: "{{ configs_path }}/xmonad-conf"
-    version: "{{ xmonadconf_branch }}"
-    accept_hostkey: yes
+- name: ensure local xmonad directory
+  file:
+    state: directory
+    path: "{{ user_home }}/.xmonad"
 
-- name: Remove (old) XMonad configuration
-  command: make uninstall
-  args:
-    chdir: "{{ configs_path }}/xmonad-conf"
-  ignore_errors: true
-
-- name: Install XMonad configuration
-  command: make install
-  args:
-    chdir: "{{ configs_path }}/xmonad-conf"
+- name: deploy startup hook
+  template:
+    src: startup-hook.j2
+    dest: "{{ user_home }}/.xmonad/startup-hook"
+    mode: 0755
 
 - name: Configure Xresources
   template:
     src: Xresources.j2
     dest: "{{ user_home }}/.Xresources"
+
+- name: Configure xsession
+  copy:
+    src: xsession
+    dest: "{{ user_home }}/.xsession"
+    mode: 0755
+
+- name: Configure Xmonad
+  template:
+    src: xmonad.hs.j2
+    dest: "{{ user_home }}/.xmonad/xmonad.hs"
 
 - name: Configure xmobar
   tags: xmobar
