@@ -11,20 +11,21 @@
     dest: "{{ user_home }}/.offlineimaprc"
     mode: 0600
 
-- name: write systemd service
-  sudo: yes
-  copy:
-    src: offlineimap@.service
-    dest: "/etc/systemd/system/offlineimap@.service"
-    mode: 644
+- name: user systemd dir exists
+  file:
+    state: directory
+    path: "{{ user_home }}/.config/systemd/user"
 
-- name: restart systemd daemon
-  sudo: yes
-  command: systemctl daemon-reload
+- name: ensure service is defined
+  copy:
+    src: offlineimap.service
+    dest: "{{ user_home }}/.config/systemd/user/offlineimap.service"
+    mode: 0644
 
 - name: enable offlinemap service
-  sudo: yes
-  service:
-    name: offlineimap@{{ ansible_user_id }}.service
+  systemd:
+    name: offlineimap.service
     enabled: yes
     state: started
+    user: yes
+    daemon_reload: yes
