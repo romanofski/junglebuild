@@ -2,8 +2,8 @@
 offlineimap:
   account: MyAccount
   postsynchook: ""
-  certfingerprint: ""
   remotehost: my.mailserver.test
   remoteuser: username
+  remotepass: secret
   folderfilter: ""
   idlefolders: ""

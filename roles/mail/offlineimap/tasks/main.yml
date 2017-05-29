@@ -22,9 +22,15 @@
     dest: "{{ user_home }}/.config/systemd/user/offlineimap.service"
     mode: 0644
 
-- name: enable offlinemap service
+- name: ensure timer is defined
+  copy:
+    src: offlineimap.timer
+    dest: "{{ user_home }}/.config/systemd/user/offlineimap.timer"
+    mode: 0644
+
+- name: enable offlinemap timer
   systemd:
-    name: offlineimap.service
+    name: offlineimap.timer
     enabled: yes
     state: started
     user: yes

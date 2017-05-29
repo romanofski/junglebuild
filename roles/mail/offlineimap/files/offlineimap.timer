@@ -1,0 +1,6 @@
+[Unit]
+Description=offlineimap timer
+
+[Timer]
+OnStartupSec=30
+OnUnitActiveSec=3min

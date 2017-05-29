@@ -10,20 +10,18 @@ maxsyncaccounts = 2
 localrepository = {{ offlineimap.account }}Local
 remoterepository = {{ offlineimap.account }}Remote
 autorefresh = 5
+synclabels = yes
 postsynchook = {{ offlineimap.postsynchook }} 
 
 [Repository {{ offlineimap.account }}Local]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/Maildir/
 
 [Repository {{ offlineimap.account }}Remote]
-type = IMAP
-ssl = yes
-cert_fingerprint = {{ offlineimap.certfingerprint }}
-maxconnections = 1
-remotehost = {{ offlineimap.remotehost }}
-remoteport = 993
+type = Gmail
+sslcacertfile = /etc/ssl/certs/ca-bundle.crt
 remoteuser = {{ offlineimap.remoteuser }}
+remotepass = {{ offlineimap.remotepass }}
 folderfilter = {{ offlineimap.folderfilter }}
 idlefolders = {{ offlineimap.idlefolders }}
-holdconnectionopen = yes
+ignorelabels = \Inbox, \Starred, \Sent, \Draft, \Spam, \Trash, \Important
