@@ -7,3 +7,5 @@ offlineimap:
   remotepass: secret
   folderfilter: ""
   idlefolders: ""
+notmuch:
+  filters:

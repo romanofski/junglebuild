@@ -5,6 +5,18 @@
     name: "offlineimap"
     state: latest
 
+- name: install postsync script
+  template:
+    src: offlineimap-postsync.sh.j2
+    dest: "{{ user_home }}/.local/bin/offlineimap-postsync"
+    mode: 0755
+
+- name: write notmuch tag config for postsync
+  template:
+    src: notmuch.batch.j2
+    dest: "{{ user_home }}/.config/nmtag.batch"
+    mode: 0755
+
 - name: install new offlineimap conf
   template:
     src: offlineimaprc.j2

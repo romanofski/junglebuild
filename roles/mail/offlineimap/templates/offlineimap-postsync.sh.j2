@@ -1,0 +1,4 @@
+#!/bin/bash
+set -xe
+notmuch new
+notmuch tag --batch --input={{ user_home }}/.config/nmtag.batch
