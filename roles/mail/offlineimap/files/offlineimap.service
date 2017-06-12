@@ -1,9 +1,0 @@
-# /etc/systemd/system/offlineimap@.service
-[Unit]
-Description=offlineimap
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/offlineimap -u basic -o
-KillSignal=SIGUSR2
-TimeoutSec=5min

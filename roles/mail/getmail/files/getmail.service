@@ -1,0 +1,8 @@
+[Unit]
+Description=getmail
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/getmail --idle=INBOX
+KillSignal=SIGUSR2
+Restart=on-failure

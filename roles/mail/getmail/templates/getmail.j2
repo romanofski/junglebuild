@@ -1,0 +1,14 @@
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = {{ fetchmail.server }}
+username = {{ fetchmail.username }}
+password = {{ fetchmail.password }}
+mailboxes = ALL
+
+[destination]
+type = MDA_external
+path = /usr/bin/maildrop
+
+[options]
+delete = true
+delivered_to = false

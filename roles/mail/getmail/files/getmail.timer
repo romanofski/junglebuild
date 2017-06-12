@@ -1,0 +1,7 @@
+[Unit]
+Description=getmail timer
+
+[Timer]
+OnStartupSec=30
+OnUnitActiveSec=3min
+Unit=getmail.service
