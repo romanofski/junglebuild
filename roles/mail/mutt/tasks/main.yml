@@ -14,6 +14,7 @@
     - elinks
     - odt2txt
     - urlview
+    - t-prot
 
 - name: ensure ldap directory
   tags: lbdb
