@@ -7,3 +7,4 @@
   with_items:
     - byobu
     - powertop
+    - the_silver_searcher
