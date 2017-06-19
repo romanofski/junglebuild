@@ -59,6 +59,7 @@
   with_items:
     - autoconf
     - automake
+    - gettext-devel
     - ncurses-devel
     - notmuch-devel
     - openssl-devel
