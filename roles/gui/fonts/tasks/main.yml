@@ -1,6 +1,11 @@
 ---
+- name: Ensure font directory exists
+  file:
+    state: directory
+    path: "{{ user_home }}/.fonts"
+
 - name: Install powerline fonts
   git:
     repo: https://github.com/powerline/fonts.git
-    dest: "{{ user_home }}/.fonts"
+    dest: "{{ user_home }}/.fonts/powerline"
     accept_hostkey: yes
