@@ -3,7 +3,7 @@
   dnf:
     name: "{{ item }}"
     state: present
-  sudo: yes
+  become: yes
   tags: packages
   with_items:
     - firefox

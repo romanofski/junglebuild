@@ -1,6 +1,6 @@
 ---
 - name: ensure virtualenv is installed
-  sudo: true
+  become: true
   tags: packages
   dnf:
     name: "{{ item }}"

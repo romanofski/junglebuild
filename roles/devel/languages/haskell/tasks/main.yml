@@ -1,13 +1,11 @@
 ---
 - name: get stack repository
-  sudo: yes
-  get_url:
-    url: https://s3.amazonaws.com/download.fpcomplete.com/fedora/{{ ansible_distribution_major_version }}/fpco.repo
-    dest: /etc/yum.repos.d/fpco.repo
+  become: yes
+  command: dnf copr enable -y petersen/stack
   when: ansible_distribution == "Fedora"
 
 - name: install packages
-  sudo: yes
+  become: yes
   tags: packages
   dnf:
     name: "{{ item }}"

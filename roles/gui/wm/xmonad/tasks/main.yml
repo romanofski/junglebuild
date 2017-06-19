@@ -1,7 +1,7 @@
 ---
 - name: ensure xmonad and tools are installed
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   tags: packages
   with_items:
     - xmonad

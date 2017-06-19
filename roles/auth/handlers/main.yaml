@@ -1,7 +1,7 @@
 ---
 
 - name: Restart sssd
-  sudo: yes
+  become: yes
   service:
     name: sssd
     state: restarted

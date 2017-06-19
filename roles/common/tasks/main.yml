@@ -1,4 +1,4 @@
 ---
 - name: ensure git is installed
   dnf: name=git state=latest
-  sudo: yes
+  become: yes

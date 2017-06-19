@@ -1,6 +1,6 @@
 ---
 - name: Install runtime dependencies
-  sudo: yes
+  become: yes
   tags: lbdb
   dnf:
     name: "{{ item }}"
@@ -47,13 +47,13 @@
     dest: "{{ user_home }}/works/mutt-colors-solarized"
 
 - name: Install development tools
-  sudo: yes
+  become: yes
   dnf:
     name: "@Development Tools"
     state: present 
 
 - name: Install compile dependencies
-  sudo: yes
+  become: yes
   dnf:
     name: "{{ item }}"
     state: latest
@@ -83,13 +83,13 @@
     - make
 
 - name: install mutt
-  sudo: yes
+  become: yes
   command: make install
   args:
     chdir: "{{ project_home }}"
 
 - name: fix up ownership in mutt
-  sudo: yes
+  become: yes
   command: "sudo chown -R {{ ansible_user_id }}.{{ ansible_user_id }} {{ prefix }}"
 
 - name: ensure users local exists

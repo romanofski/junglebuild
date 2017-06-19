@@ -1,6 +1,6 @@
 ---
 - name: ensure delivery packages are installed
-  sudo: yes
+  become: yes
   dnf:
     name: "{{ item }}"
     state: latest
@@ -9,7 +9,7 @@
   - maildrop
 
 - name: install notmuch compile deps
-  sudo: yes
+  become: yes
   dnf:
     name: "{{ item }}"
     state: latest

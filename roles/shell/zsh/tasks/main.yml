@@ -1,7 +1,7 @@
 ---
 - name: ensure zsh installed
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - zsh
     - util-linux-user
@@ -28,5 +28,5 @@
 
 - name: register zsh for user
   command: chsh -s /bin/zsh {{ ansible_user_id }}
-  sudo: yes
+  become: yes
 

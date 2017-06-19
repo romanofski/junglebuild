@@ -1,7 +1,7 @@
 ---
 - name: ensure vim installed
   dnf: name=vim state=latest
-  sudo: yes
+  become: yes
 
 - name: clone my vim setup
   git:
@@ -11,4 +11,4 @@
 
 - name: additional development tools for plugins
   dnf: name=ctags state=latest
-  sudo: yes
+  become: yes

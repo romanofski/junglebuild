@@ -1,7 +1,7 @@
 ---
 - name: ensure emacs is installed
   dnf: name=emacs state=latest
-  sudo: yes
+  become: yes
 
 - name: clone my emacs setup
   git:
@@ -20,7 +20,7 @@
   dnf:
     name: "{{ item }}"
     state: latest
-  sudo: yes
+  become: yes
   with_items:
     - ctags
     - hlint

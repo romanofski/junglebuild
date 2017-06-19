@@ -1,14 +1,14 @@
 ---
 
 - name: Install krb
-  sudo: yes
+  become: yes
   tags: krb5
   dnf:
     name: krb5-workstation
     state: present
 
 - name: Configure kerberos
-  sudo: yes
+  become: yes
   tags: krb5
   template:
     src: krb5.conf.j2
@@ -18,13 +18,13 @@
     group: root
 
 - name: Install sssd package
-  sudo: yes
+  become: yes
   dnf:
     name: sssd
     state: present
 
 - name: Configure sssd service
-  sudo: yes
+  become: yes
   template:
     src: sssd.conf.j2
     dest: /etc/sssd/sssd.conf
@@ -35,18 +35,18 @@
     - Restart sssd
 
 - name: Enable sssd service
-  sudo: yes
+  become: yes
   service:
     name: sssd
     enabled: yes
 
 - name: Make sure sssd is running
-  sudo: yes
+  become: yes
   service:
     name: sssd
     state: started
   register: sssd_service_started
 
 - name: Enable NSS/PAM
-  sudo: yes
+  become: yes
   command: authconfig --enablesssd --enablesssdauth --update

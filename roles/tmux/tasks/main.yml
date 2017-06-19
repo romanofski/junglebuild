@@ -1,6 +1,6 @@
 ---
 - name: Have tmux installed
-  sudo: yes
+  become: yes
   dnf:
     name: tmux
     state: present 
