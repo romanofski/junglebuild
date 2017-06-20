@@ -3,8 +3,11 @@
   become: yes
   tags: packages
   dnf:
-    name: docker
+    name: "{{ item }}"
     state: present
+  with_items:
+    - docker
+    - docker-compose
 
 - name: make sure docker is started on book
   become: yes
