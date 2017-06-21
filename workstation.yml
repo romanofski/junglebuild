@@ -10,8 +10,9 @@
   - { role: gui/apps, tags: [apps] }
   - { role: vim, tags: vim }
   - { role: emacs, tags: emacs }
-  - { role: devel/languages/haskell, tags: [haskell, languages] }
-  - { role: devel/languages/python, tags: [python, languages] }
+  - { role: devel/apps, tags: [devel, apps, languages] }
+  - { role: devel/languages/haskell, tags: [devel, haskell, languages] }
+  - { role: devel/languages/python, tags: [devel, python, languages] }
   - { role: devel/docker, tags: docker }
   - { role: mail/mutt, tags: [mail, mutt] }
   - { role: mail/getmail, tags: [mail, mda] }
