@@ -8,4 +8,24 @@
     - byobu
     - powertop
     - the_silver_searcher
+
+- name: install important services
+  tags: services
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  with_items:
     - bitlbee
+    - openssh-server
+
+- name: make sure installed services are started
+  become: yes
+  tags: services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - bitlbee
+    - sshd
