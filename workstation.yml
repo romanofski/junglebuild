@@ -14,6 +14,7 @@
   - { role: devel/languages/haskell, tags: [devel, haskell, languages] }
   - { role: devel/languages/python, tags: [devel, python, languages] }
   - { role: devel/docker, tags: docker }
+  - { role: ddns, tags: services }
   - { role: mail/mutt, tags: [mail, mutt] }
   - { role: mail/getmail, tags: [mail, mda] }
   - { role: auth, tags: [sssd, auth] }

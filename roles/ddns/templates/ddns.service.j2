@@ -1,0 +1,12 @@
+[Unit]
+Description=DDNS Service Update
+Wants=network.target
+
+[Service]
+Type=oneshot
+Restart=no
+ExecStart={{ ddns.command }}
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ddns
+SyslogLevel=warning
