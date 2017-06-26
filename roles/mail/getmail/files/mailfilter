@@ -1,6 +1,0 @@
-import PATH
-DEFAULT="$HOME/Maildir"
-
-logfile "$HOME/maildrop.log"
-
-to  "| $HOME/.local/bin/notmuch-deliver -t inbox"

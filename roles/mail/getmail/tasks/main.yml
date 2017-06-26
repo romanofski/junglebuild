@@ -39,8 +39,8 @@
     - make install
 
 - name: install mailfilter
-  copy:
-    src: mailfilter
+  template:
+    src: mailfilter.j2
     dest: "{{ user_home }}/.mailfilter"
     mode: 0600
     

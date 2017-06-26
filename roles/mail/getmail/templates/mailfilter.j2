@@ -1,0 +1,8 @@
+import PATH
+DEFAULT="$HOME/Maildir"
+
+logfile "$HOME/maildrop.log"
+
+{{ mailfilter_rules }}
+
+to  "| $HOME/.local/bin/notmuch-deliver -t inbox"
