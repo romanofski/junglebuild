@@ -8,6 +8,7 @@
     - byobu
     - powertop
     - the_silver_searcher
+    - wipe
 
 - name: install important services
   tags: services
