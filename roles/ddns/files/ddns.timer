@@ -4,3 +4,6 @@ Description=DDNS timer
 [Timer]
 OnStartupSec=30
 OnUnitActiveSec=5min
+
+[Install]
+WantedBy=default.target
