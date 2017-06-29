@@ -3,7 +3,7 @@ type = SimpleIMAPSSLRetriever
 server = {{ fetchmail.server }}
 username = {{ fetchmail.username }}
 password = {{ fetchmail.password }}
-mailboxes = ALL
+mailboxes = {{ fetchmail.mailboxes }}
 
 [destination]
 type = MDA_external

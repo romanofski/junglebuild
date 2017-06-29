@@ -4,4 +4,5 @@ fetchmail:
   username: myuser
   password: secret
   localuser: "{{ ansible_user_id }}"
+  mailboxes: ALL
 mailfilter_rules:
