@@ -43,7 +43,20 @@
     src: mailfilter.j2
     dest: "{{ user_home }}/.mailfilter"
     mode: 0600
-    
+
+- name: check if getmail service is defined
+  systemd:
+    name: getmail.service
+    user: yes
+  register: service_status
+
+- name: disable getmail service for maildrop test
+  systemd:
+    name: getmail.service
+    user: yes
+    state: stopped
+  when: service_status
+
 - name: prepare maildrop test
   copy:
     src: testmail
