@@ -1,6 +1,0 @@
----
-fetchmail:
-  server: mymailserver.test
-  username: myuser
-  password: secret
-  localuser: "{{ ansible_user_id }}"

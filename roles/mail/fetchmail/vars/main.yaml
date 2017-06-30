@@ -1,3 +1,0 @@
----
-project_base_home: "{{ user_home }}/works/notmuch"
-project_home: "{{ project_base_home }}/contrib/notmuch-deliver"
