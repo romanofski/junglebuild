@@ -71,6 +71,7 @@
   git:
     repo: https://github.com/neomutt/neomutt
     dest: "{{ project_home }}"
+    version: master
 
 - name: Install mutt
   command: "{{ item }}"
