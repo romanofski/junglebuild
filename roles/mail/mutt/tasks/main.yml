@@ -101,6 +101,6 @@
 
 - name: create a local link to mutt
   file:
-    src: "{{ prefix }}/bin/mutt"
+    src: "{{ prefix }}/bin/neomutt"
     dest: "{{ user_home }}/.local/bin/mutt"
     state: link
