@@ -1,27 +1,24 @@
 ---
-- name: user systemd dir exists
-  file:
-    state: directory
-    path: "{{ user_home }}/.config/systemd/user"
-
 - name: ensure service is defined
+  become: yes
   template:
     src: ddns.service.j2
-    dest: "{{ user_home }}/.config/systemd/user/ddns.service"
+    dest: /etc/systemd/system/ddns.service
     mode: 0644
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    owner: root
+    group: root
 
 - name: ensure ddns timer is defined
+  become: yes
   copy:
     src: ddns.timer
-    dest: "{{ user_home }}/.config/systemd/user/ddns.timer"
+    dest: /etc/systemd/system/ddns.timer
     mode: 0644
 
 - name: enable ddns timer
+  become: yes
   systemd:
     name: ddns.timer
     enabled: yes
     state: started
-    user: yes
     daemon_reload: yes
