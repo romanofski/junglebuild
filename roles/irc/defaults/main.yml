@@ -1,0 +1,9 @@
+---
+irc:
+  defaults:
+    username: rjoost
+    realname: Róman Joost
+  servers:
+    freenode:
+      addresses: chat.freenode.net
+      autojoin:

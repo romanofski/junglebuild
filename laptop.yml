@@ -17,3 +17,4 @@
     - { role: mail/getmail, tags: [mail, mda] }
     - { role: tmux, tags: [terminal, tmux] }
     - { role: auth, tags: [sssd, auth] }
+    - { role: irc, tags: [weechat, irc] }

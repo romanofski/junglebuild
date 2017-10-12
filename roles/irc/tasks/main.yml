@@ -1,0 +1,36 @@
+---
+- name: install weechat
+  become: true
+  package:
+    name: weechat
+    state: installed
+
+- name: prepare weechat config dir
+  file:
+    path: "{{ user_home }}/.weechat"
+    state: directory
+    mode: 0700
+
+- name: configure weechat
+  template:
+    src: irc.conf.j2
+    dest: "{{ user_home }}/.weechat/irc.conf"
+    mode: 0600
+
+- name: install riot plugin
+  git:
+    repo: https://github.com/torhve/weechat-matrix-protocol-script.git
+    dest: "{{ user_home }}/works/weechat-matrix-protocol-script"
+    accept_hostkey: yes
+
+- name: prepare weechat lua autoload dir
+  file:
+    path: "{{ user_home }}/.weechat/lua/autoload"
+    state: directory
+    mode: 0700
+
+- name: copy lua script
+  copy:
+    src: "{{ user_home }}/works/weechat-matrix-protocol-script/matrix.lua"
+    dest: "{{ user_home }}/.weechat/lua/autoload"
+    mode: 0700

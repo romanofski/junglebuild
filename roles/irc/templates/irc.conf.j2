@@ -1,0 +1,13 @@
+[server_default]
+autoreconnect = on
+autorejoin = off
+autorejoin_delay = 30
+realname = { irc.default.realname }
+username = { irc.default.username }
+
+[servers]
+{% for key, dict in irc.servers() %}
+{% for k, v in dict %}
+{{ key }}.{{ k }} = {{ v }}
+{% endfor %}
+{% endfor %}
